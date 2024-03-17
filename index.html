@@ -7,29 +7,28 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-tr from-sky-500 to-blue-200 w-screen h-screen flex">
-  <div class="calculator__container grid grid-cols-4 grid-rows-4 gap-3 justify-items-center w-fit text-white text-xl m-auto">
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">C</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full col-span-2">ENTER</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">/</button>
-
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">7</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">8</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">9</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">X</button>
-    
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">4</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">5</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">6</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">-</button>
-    
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">1</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">2</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">3</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">+</button>
-    
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full h-full col-span-2 flex justify-start">0</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full h-full">,</button>
-    <button class="calculator__input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full h-full">=</button>
+  <div class="calculator__interface flex w-full">
+    <div class="calculator__container grid grid-cols-4 grid-rows-7 gap-3 justify-items-center w-fit text-white text-xl m-auto">
+      <p class="calculator__receive js-receive py-4 px-6 rounded-md bg-gray-700 border border-gray-200 text-5xl w-full flex justify-center items-center h-full col-span-4 row-span-2"></p>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">C</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full col-span-2">ENTER</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">/</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">7</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">8</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">9</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">X</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">4</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">5</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">6</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">-</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">1</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">2</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full flex justify-center h-full">3</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full flex justify-center h-full">+</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-zinc-800 hover:bg-zinc-700 w-full h-full col-span-2 flex justify-start">0</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full h-full">,</button>
+      <button class="calculator__input js-input py-4 px-6 rounded-full transition-all bg-amber-800 hover:bg-amber-600 w-full h-full">=</button>
+    </div>
   </div>
 </body>
 </html>
