@@ -46,9 +46,10 @@ const valid = (validate) => {
 }
 
 const pushingNumbers = (e) => {
-  const text = result.textContent
+  let text = result.textContent
   if (/,/.test(text)) {
-    text.replace(',', '.')
+    text = text.replace(',', '.')
+    e.push(parseFloat(text))
   } else {
     e.push(parseInt(text))
   }
@@ -90,8 +91,8 @@ const calculator = () => {
       } else {
         pushingNumbers(calcul)
         operatorArray.push(operator.textContent)
-        console.log('operator', operatorArray) // TO REMOVE
-        console.log('operator', calcul) // TO REMOVE
+        console.log('operator : tableau des signes', operatorArray) // TO REMOVE
+        console.log('operator : tableau des nombres', calcul) // TO REMOVE
         result.textContent = ''
         result.textContent += operator.textContent
       }
@@ -109,6 +110,6 @@ calculator()
 // Récupérer la valeur str de result.textContent et la convertir en float a la toute fin
 
 // FIXS :
-// - Régler le problème de la virgule (nombres de chiffres après vigrule au résultat)
+// - Régler le problème de la virgule (nombres de chiffres après vigrule au résultat) = par ex seulement 2 chiffres après la virgule
 // - Régler les nombres a virgules
 // - Régler le problème de changement d'opérateur, suelement le premier est pris en compte
