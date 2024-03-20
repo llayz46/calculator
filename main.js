@@ -16,8 +16,8 @@ const clear = (log) => {
   reset.addEventListener('click', () => {
     log.textContent = ''
     calcul = []
-    console.log('clear', calcul) // TO REMOVE
-    // Régler le clear : 6 + 6 puis rajout d'un chiffre au résultat fonctionne après un clear
+    operatorArray = []
+    validatingCount = 0
   })
 }
 
@@ -25,7 +25,7 @@ const valid = (validate) => {
   validate.forEach((validatingInputs) => {
     validatingInputs.addEventListener('click', () => {
       if (result.textContent !== '' && calcul.length > 0 && result.textContent !== '*' && result.textContent !== '/' && result.textContent !== '+' && result.textContent !== '-') {
-        calcul.push(parseFloat(result.textContent))
+        pushingNumbers(calcul)
         console.log('valid', calcul) // TO REMOVE
         validatingCount++
         console.log('validatingCount', validatingCount) // TO REMOVE
@@ -45,7 +45,14 @@ const valid = (validate) => {
   })
 }
 
-// PUSHING NUMBERS
+const pushingNumbers = (e) => {
+  const text = result.textContent
+  if (/,/.test(text)) {
+    text.replace(',', '.')
+  } else {
+    e.push(parseInt(text))
+  }
+}
 
 const calculator = () => {
   inputNumber.forEach((input) => {
@@ -77,11 +84,11 @@ const calculator = () => {
   operator.forEach((operator) => {
     operator.addEventListener('click', () => {
       if (result.textContent === '' || regex.test(result.textContent)) {
-        console.log ('error') // UNE ALERT ??
+        console.log ('error : pas de nombre') // UNE ALERT ??
       } else if (result.textContent === '*' || result.textContent === '/' || result.textContent === '+' || result.textContent === '-' || result.textContent === ',') {
         result.textContent = '' + operator.textContent
       } else {
-        calcul.push(parseFloat(result.textContent))
+        pushingNumbers(calcul)
         operatorArray.push(operator.textContent)
         console.log('operator', operatorArray) // TO REMOVE
         console.log('operator', calcul) // TO REMOVE
@@ -102,16 +109,6 @@ calculator()
 // Récupérer la valeur str de result.textContent et la convertir en float a la toute fin
 
 // FIXS :
-// - Régler le clear : 6 + 6 puis rajout d'un chiffre au résultat fonctionne après un clear
 // - Régler le problème de la virgule (nombres de chiffres après vigrule au résultat)
 // - Régler les nombres a virgules
-
-
-// const pushingNumbers = (e) => {
-//   const text = result.textContent
-//   if (/,/.test(text)) {
-//     text.replace(',', '.')
-//   } else {
-//     e.push(parseInt(text))
-//   }
-// }
+// - Régler le problème de changement d'opérateur, suelement le premier est pris en compte
