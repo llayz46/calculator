@@ -11,6 +11,7 @@ let operatorArray = []
 let validatingCount = 0
 
 const regex = /^0+(\.0*)?$/
+const operators = ['+', '-', '*', '/']
 
 const clear = (log) => {
   reset.addEventListener('click', () => {
@@ -24,7 +25,7 @@ const clear = (log) => {
 const valid = (validate) => {
   validate.forEach((validatingInputs) => {
     validatingInputs.addEventListener('click', () => {
-      if (result.textContent !== '' && calcul.length > 0 && result.textContent !== '*' && result.textContent !== '/' && result.textContent !== '+' && result.textContent !== '-') {
+      if (result.textContent !== '' && calcul.length > 0 && operators.includes(result.textContent) === false) {
         pushingNumbers(calcul)
         console.log('valid', calcul) // TO REMOVE
         validatingCount++
@@ -51,6 +52,19 @@ const pushingNumbers = (e) => {
     text = text.replace(',', '.')
     e.push(parseFloat(text))
   } else {
+    e.push(parseInt(text))
+  }
+}
+
+const pushingToArray = (e) => {
+  let text = result.textContent
+  if (/,/.test(text)) {
+    text = text.replace(',', '.')
+    e.push(parseFloat(text))
+  } else if (operators.includes(text)) {
+
+  }
+  else {
     e.push(parseInt(text))
   }
 }
@@ -87,6 +101,8 @@ const calculator = () => {
       if (result.textContent === '' || regex.test(result.textContent)) {
         console.log ('error : pas de nombre') // UNE ALERT ??
       } else if (result.textContent === '*' || result.textContent === '/' || result.textContent === '+' || result.textContent === '-' || result.textContent === ',') {
+        operatorArray.pop()
+        operatorArray.push(operator.textContent)
         result.textContent = '' + operator.textContent
       } else {
         pushingNumbers(calcul)
@@ -105,11 +121,8 @@ const calculator = () => {
 
 calculator()
 
-
-// calcul = parseFloat(result.textContent)
-// Récupérer la valeur str de result.textContent et la convertir en float a la toute fin
-
 // FIXS :
 // - Régler le problème de la virgule (nombres de chiffres après vigrule au résultat) = par ex seulement 2 chiffres après la virgule
 // - Régler les nombres a virgules
-// - Régler le problème de changement d'opérateur, suelement le premier est pris en compte
+// - Régler le problème d'impossibilité d'agir après un résultat égal a 0 (9+9 - 18)
+// - Régler le problème que si un résultat présent est un nombre a virgule ex: 48/5 = 9.6 si on lui ajoute 3: 9.6 + 3 = 12.6 mais cela fait 12
