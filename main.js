@@ -91,7 +91,9 @@ const calculator = () => {
     if (result.textContent === '') {
       result.textContent += '0' + comma.textContent
     } else if (result.textContent === '*' || result.textContent === '/' || result.textContent === '+' || result.textContent === '-' || result.textContent === ',') {
-      console.log ('error') // UNE ALERT ??
+      console.log('error') // UNE ALERT ??
+    } else if (calcul.length === 2) {
+      console.log(new Error('Impossible de d\'ajouter une virgule a un résultat déjà validé'))
     } else {
       result.textContent += comma.textContent
     }
@@ -99,8 +101,8 @@ const calculator = () => {
 
   operator.forEach((operator) => {
     operator.addEventListener('click', () => {
-      if (result.textContent === '' || regex.test(result.textContent)) {
-        console.log ('error : pas de nombre') // UNE ALERT ??
+      if (result.textContent === '' || regex.test(result.textContent) && validatingCount < 1) {
+        console.log(new Error('Impossible d\'ajouter un opérateur car il n\'y a pas de nombre a calculer'))
       } else if (result.textContent === '*' || result.textContent === '/' || result.textContent === '+' || result.textContent === '-' || result.textContent === ',') {
         operatorArray.pop()
         operatorArray.push(operator.textContent)
@@ -124,6 +126,7 @@ calculator()
 
 // FIXS :
 // - Régler le problème d'impossibilité d'agir après un résultat égal a 0 (9+9 - 18)
+// - Régler le problème de la possibilité d'ajouter une virgule a un résultat existant
 
 // FEATURES :
 // - Pouvoir écrire avec le pavé numérique du clavier
