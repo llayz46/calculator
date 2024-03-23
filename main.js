@@ -38,7 +38,6 @@ const valid = (validate) => {
             calcul.pop()
             console.log('error')
           } else {
-            // result.textContent = eval(calcul[0] + operatorArray[0] + calcul[1])
             calculating()
           }
         }
@@ -51,34 +50,23 @@ const calculating = () => {
   let calculResult = eval(calcul[0] + operatorArray[0] + calcul[1])
   if (!Number.isInteger(calculResult)) {
     let calculResultFormatted = calculResult.toFixed(3)
-    while (calculResultFormatted[calculResultFormatted.length - 1] === '0') {
-      calculResultFormatted = calculResultFormatted.slice(0, -1)
-    }
-    result.textContent = calculResultFormatted
+      while (calculResultFormatted[calculResultFormatted.length - 1] === '0') {
+        calculResultFormatted = calculResultFormatted.slice(0, -1)
+      }
+      result.textContent = calculResultFormatted
+      console.log('virgule', calculResult)
   } else {
     result.textContent = calculResult
+    console.log(calculResult)
   }
 }
 
 const pushingNumbers = (e) => {
   let text = result.textContent
-  if (/,/.test(text)) {
+  if (/[,.]/.test(text)) {
     text = text.replace(',', '.')
     e.push(parseFloat(text))
   } else {
-    e.push(parseInt(text))
-  }
-}
-
-const pushingToArray = (e) => {
-  let text = result.textContent
-  if (/,/.test(text)) {
-    text = text.replace(',', '.')
-    e.push(parseFloat(text))
-  } else if (operators.includes(text)) {
-
-  }
-  else {
     e.push(parseInt(text))
   }
 }
@@ -104,8 +92,7 @@ const calculator = () => {
       result.textContent += '0' + comma.textContent
     } else if (result.textContent === '*' || result.textContent === '/' || result.textContent === '+' || result.textContent === '-' || result.textContent === ',') {
       console.log ('error') // UNE ALERT ??
-    }
-    else {
+    } else {
       result.textContent += comma.textContent
     }
   })
@@ -136,11 +123,7 @@ const calculator = () => {
 calculator()
 
 // FIXS :
-// - Régler le problème de la virgule (nombres de chiffres après vigrule au résultat) = par ex seulement 2 chiffres après la virgule
-// - Régler les nombres a virgules
 // - Régler le problème d'impossibilité d'agir après un résultat égal a 0 (9+9 - 18)
-// - Régler le problème que si un résultat présent est un nombre a virgule ex: 48/5 = 9.6 si on lui ajoute 3: 9.6 + 3 = 12.6 mais cela fait 12
-// - Régler le problème de faire un calcul après un résultat de chiffre a virgule, on perd la virgule (6.6 + 3.2 = 9.8 - 3 = 6)
 
 // FEATURES :
 // - Pouvoir écrire avec le pavé numérique du clavier
