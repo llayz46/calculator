@@ -27,9 +27,7 @@ const valid = (validate) => {
     validatingInputs.addEventListener('click', () => {
       if (result.textContent !== '' && calcul.length > 0 && operators.includes(result.textContent) === false) {
         pushingNumbers(calcul)
-        console.log('valid', calcul) // TO REMOVE
         validatingCount++
-        console.log('validatingCount', validatingCount) // TO REMOVE
         calculating()
         if (validatingCount > 1) {
           calcul.splice(0, 2)
@@ -110,8 +108,6 @@ const calculator = () => {
       } else {
         pushingNumbers(calcul)
         operatorArray.push(operator.textContent)
-        console.log('operator : tableau des signes', operatorArray) // TO REMOVE
-        console.log('operator : tableau des nombres', calcul) // TO REMOVE
         result.textContent = ''
         result.textContent += operator.textContent
       }
@@ -123,10 +119,3 @@ const calculator = () => {
 }
 
 calculator()
-
-// FIXS :
-// - Régler le problème d'impossibilité d'agir après un résultat égal a 0 (9+9 - 18)
-// - Régler le problème de la possibilité d'ajouter une virgule a un résultat existant
-
-// FEATURES :
-// - Pouvoir écrire avec le pavé numérique du clavier
